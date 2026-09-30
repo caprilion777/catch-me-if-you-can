@@ -1,0 +1,31 @@
+# Project Specification: "Catch Me If You Can"
+
+## Overview
+A web-based multiplayer party game where players submit non-obvious facts about themselves, and the group tries to guess who wrote which fact. 
+
+## Tech Stack
+- Frontend: React (Vite)
+- Styling: Tailwind CSS
+- Backend/Database: Supabase (Realtime)
+- Icons: Lucide React
+
+## Core Game Flow
+1. **Home Screen:** User can create a new room (becomes Host) or join an existing room via a 4-digit code.
+2. **Lobby:** Players wait for others to join. Host has a "Start Game" button.
+3. **Fact Submission:** Each player enters 2 facts about themselves. System waits for all players to submit (status: ready).
+4. **Guessing Phase:** 
+   - Facts are displayed one by one in random order.
+   - Players vote on who they think the author is.
+   - Reveal correct answer and update scores.
+5. **Results:** Final scoreboard showing the winner.
+
+## Data Models (Draft)
+- **Room:** { id, code (4 digits), status ('waiting' | 'submitting' | 'guessing' | 'finished'), host_id }
+- **Player:** { id, room_id, name, score, is_host, is_ready }
+- **Fact:** { id, room_id, author_id, text_1, text_2 }
+
+## Development Rules for AI
+- Write clean, modular, and functional React components.
+- Keep components small. One file per component.
+- Do not implement backend/Supabase logic until explicitly asked. Use mock data and local state for initial UI testing.
+- Use Tailwind for all styling. Make it responsive (mobile-first).
